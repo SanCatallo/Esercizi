@@ -1,0 +1,9 @@
+SELECT * FROM ingredienti WHERE vegetariano = 1;
+SELECT * FROM pasti WHERE calorie > 500;
+SELECT * FROM pasti WHERE prezzo >= 15 AND prezzo <= 16;
+SELECT * FROM ingredienti WHERE senza_lattosio = 1 AND senza_glutine = 1;
+SELECT * FROM pasti WHERE prezzo < 15 OR calorie > 600;
+SELECT * FROM ingredienti WHERE vegano = 1 OR senza_glutine = 1;
+SELECT * FROM pasti WHERE nome = 'Pesto Pasta';
+SELECT * FROM ingredienti WHERE senza_lattosio = 0;
+SELECT * FROM pasti WHERE prezzo > 20 AND calorie < 800;
