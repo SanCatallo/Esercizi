@@ -1,0 +1,12 @@
+INSERT INTO ingredients (NAME) VALUES
+    ('Eggs'),
+    ('Bread'),
+    ('Beef Patty'),
+    ('Lettuce'),
+    ('Yoghurt');
+
+
+SELECT NAME FROM ingredients;
+SELECT NAME, PRICE FROM ingredients;
+SELECT * FROM ingredients ORDER BY NAME;
+SELECT * FROM ingredients ORDER BY GLUTEN_FREE DESC;
