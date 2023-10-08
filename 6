@@ -1,0 +1,24 @@
+SELECT meal_name, COUNT(order_id) AS order_count
+FROM meal_orders
+GROUP BY meal_name;
+Total revenue for meals priced over €15:
+
+SELECT SUM(price) AS total_revenue
+FROM meal_orders
+WHERE price > 15;
+Number of meals with more than 500 calories:
+
+SELECT COUNT(*) AS high_calorie_meals_count
+FROM meal_orders
+WHERE calories > 500;
+Total price of all meals whose name contains the letter "S":
+
+SELECT SUM(price) AS total_price
+FROM meal_orders
+WHERE LOWER(meal_name) LIKE '%s%';
+Number of orders for each meal ordered before a specific date and time (replace "202X-XX-XX 18:00:00" with the desired date and time):
+
+SELECT meal_name, COUNT(order_id) AS order_count
+FROM meal_orders
+WHERE order_date < '202X-XX-XX 18:00:00'
+GROUP BY meal_name;
