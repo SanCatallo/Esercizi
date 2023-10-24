@@ -1,0 +1,37 @@
+1)
+SELECT a, r
+FROM tablea a
+LEFT JOIN tableb b ON a.key = b.key;
+
+2)
+SELECT r
+FROM tablea a
+LEFT JOIN tableb b ON a.key = b.key;
+
+3)
+SELECT b, r
+FROM tablea a
+LEFT JOIN tableb b ON a.key = b.key;
+
+4)
+SELECT a
+FROM tablea a
+LEFT JOIN tableb b ON a.key = b.key
+WHERE b.key IS NULL;
+
+5)
+SELECT b
+FROM tablea a
+LEFT JOIN tableb b ON a.key = b.key
+WHERE a.key IS NULL;
+
+6)
+SELECT a, b, r
+FROM tablea a
+LEFT JOIN tableb b ON a.key = b.key;
+
+7)
+SELECT a, b
+FROM tablea a
+LEFT JOIN tableb b ON a.key = b.key
+WHERE a.key IS NULL OR b.key IS NULL;
