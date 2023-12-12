@@ -1,9 +1,9 @@
 package com.example.Calendar.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class User {
@@ -15,8 +15,21 @@ public class User {
     private String surname;
     private String password;
     private String email;
+
+    @OneToMany(mappedBy = "user", cascade =CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Calendar> calendars;
     public User() {
     }
+
+    public List<Calendar> getCalendars() {
+        return calendars;
+    }
+
+    public void setCalendars(List<Calendar> calendars) {
+        this.calendars = calendars;
+    }
+
     public Long getId() {
         return id;
     }
