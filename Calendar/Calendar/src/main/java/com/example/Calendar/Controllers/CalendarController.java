@@ -1,7 +1,9 @@
 package com.example.Calendar.Controllers;
 
 import com.example.Calendar.Database.CalendarRepository;
+import com.example.Calendar.Database.UserRepository;
 import com.example.Calendar.Models.Calendar;
+import com.example.Calendar.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +15,17 @@ import java.util.Optional;
 public class CalendarController {
     @Autowired
     CalendarRepository calendarRepository;
-
+    @Autowired
+    UserRepository userRepository;
     @PostMapping("/newcalendar")
-    public Calendar insertNewCalendar(@RequestBody Calendar calendar){
-        return calendarRepository.save(calendar);
+    public ResponseEntity insertNewCalendar(@RequestBody Calendar calendar, @RequestParam Long userId){
+        Optional<User> existingUserOptional = userRepository.findById(userId);
+        if (existingUserOptional.isPresent()) {
+            calendar.setUser(existingUserOptional.get());
+            return ResponseEntity.ok(calendarRepository.save(calendar));
+        }else {
+            return ResponseEntity.notFound().build();
+        }
     }
     @GetMapping("/getAllCalendar")
     public List<Calendar> getAllCalendar() {
