@@ -1,11 +1,9 @@
 package com.example.Calendar.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Calendar {
@@ -17,7 +15,29 @@ public class Calendar {
 
     private Date date;
 
+    @OneToMany(mappedBy = "calendar", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Event> events;
+
+    @ManyToOne
+    private User user;
+
     public Calendar() {
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getId() {
@@ -44,3 +64,4 @@ public class Calendar {
         this.date = date;
     }
 }
+
