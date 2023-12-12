@@ -26,7 +26,7 @@ public class EventController {
     }
 
     @PutMapping("/updateEvent/{id}")
-    public ResponseEntity<Event> updateEvent(@PathVariable Long id, @RequestBody Event updatedEvent) {
+    public ResponseEntity<Event> updateEvent(@PathVariable int id, @RequestBody Event updatedEvent) {
         Optional<Event> existingEventOptional = eventRepository.findById(id);
         if (existingEventOptional.isPresent()) {
             Event existingEvent = existingEventOptional.get();
@@ -43,7 +43,7 @@ public class EventController {
     }
 
     @DeleteMapping("/deleteEvent/{id}")
-    public void deleteEvent(@PathVariable Long id) {
+    public void deleteEvent(@PathVariable int id) {
         eventRepository.deleteById(id);
     }
 }
